@@ -9,7 +9,9 @@ export default class NotesView {
             <div class="notes__sidebar">
                 <div class="buttons">
                     <button class="notes__add" type="button">Add Note</button>
-                    <button class="notes__remove" type="button">X</button>
+                    <button class="notes__remove" type="button">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
                 <div class="notes__list"></div>
             </div>
@@ -56,7 +58,9 @@ export default class NotesView {
         return `
             <div class="notes__list-item" data-note-id="${id}">
                 <div class="notes__small-title">${title}</div>
-                <div class="notes__small-delet">X</div>
+                <div class="notes__small-delet">
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
                 <div class="notes__small-body">
                     ${body.substring(0, MAX_BODY_LENGTH)}
                     ${body.length > MAX_BODY_LENGTH ? "..." : ""}
