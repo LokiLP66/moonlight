@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 html,
 body {
     height: 100vh;
@@ -9,20 +11,33 @@ body {
 }
 
 .notes {
-    display: flex;
     height: 100%;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 100%;
 }
 
 .notes * {
-    font-family: sans-serif;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .notes__sidebar {
     border-right: 2px solid #333;
     flex-shrink: 0;
     overflow-y: auto;
-    padding: 1em;
-    width: 300px;
+    padding: 1rem;
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 73% 5% 22%;
+    grid-template-rows: 100%;
 }
 
 .notes__add {
@@ -34,8 +49,30 @@ body {
     font-size: 1.25em;
     font-weight: bold;
     margin-bottom: 1em;
+    margin-right: 1em;
     padding: 0.75em 0;
     width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.notes__remove {
+    background: red;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    padding: 0.75em 0;
+    width: 100%;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .notes__add:hover {
@@ -48,6 +85,10 @@ body {
     border-radius: 7px;
     width: 100%;
     padding: 0.2rem;
+    margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
 }
 
 .notes__list-item--selected {
@@ -67,23 +108,60 @@ body {
 
 .notes__small-title {
     font-size: 1.2em;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .notes__small-body {
     padding: 0 10px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 .notes__small-updated {
     color: #aaaaaa;
     font-style: italic;
+    text-align: left;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.notes__small-delet {
     text-align: right;
+    margin: 0;
+    padding-left: 25%;
+    padding-right: 25%;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    background: red;
+    border-radius: 7px;
+    display: none;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+.notes__list-item:hover .notes__small-delet {
+    display: inline-flex;
 }
 
 .notes__preview {
     display: flex;
     flex-direction: column;
-    padding: 2rem 4rem 2rem 2rem;
+    padding: 2rem 4rem 2rem 4rem;
     flex-grow: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .notes__title,

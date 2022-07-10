@@ -1,35 +1,30 @@
 {
   "name": "moonlight",
-  "version": "1.0.0",
-  "description": "note editor",
-  "main": "index.js",
-  "scripts": {
-    "electron": "electron .",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
-  },
+  "productName": "moonlight",
+  "version": "1.1.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LokiLP66/moonlight.git"
   },
-  "author": "LokiLP66",
-  "license": "MIT",
+  "author": {
+    "name": "LokiLP66",
+    "email": "hugo.berendi@outlook.de"
+  },
   "bugs": {
     "url": "https://github.com/LokiLP66/moonlight/issues"
   },
   "homepage": "https://github.com/LokiLP66/moonlight#readme",
-  "devDependencies": {
-    "@electron-forge/maker-deb": "^6.0.0-beta.64",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.64",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.64",
-    "@electron-forge/maker-zip": "^6.0.0-beta.64",
-    "electron": "^19.0.8"
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
-  "dependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.64",
-    "electron-squirrel-startup": "^1.0.0"
-  },
+  "keywords": [],
+  "license": "MIT",
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -37,7 +32,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "Moonlight"
+            "name": "moonlight"
           }
         },
         {
@@ -56,5 +51,16 @@
         }
       ]
     }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.64",
+    "@electron-forge/maker-deb": "^6.0.0-beta.64",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.64",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.64",
+    "@electron-forge/maker-zip": "^6.0.0-beta.64",
+    "electron": "19.0.8"
   }
 }

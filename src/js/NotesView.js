@@ -7,7 +7,10 @@ export default class NotesView {
         this.onNoteDelete = onNoteDelete;
         this.root.innerHTML = `
             <div class="notes__sidebar">
-                <button class="notes__add" type="button">Add Note</button>
+                <div class="buttons">
+                    <button class="notes__add" type="button">Add Note</button>
+                    <button class="notes__remove" type="button">X</button>
+                </div>
                 <div class="notes__list"></div>
             </div>
             <div class="notes__preview">
@@ -17,11 +20,22 @@ export default class NotesView {
         `;
 
         const btnAddNote = this.root.querySelector(".notes__add");
+        const btnRemoveNote = this.root.querySelector(".notes__remove");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
+        });
+        btnRemoveNote.addEventListener("click", () => {
+            const doDelete = confirm("Are you sure you want to delete all notes?");
+            const notesListContainer = this.root.querySelector(".notes__list");
+
+            if (doDelete) {
+                notesListContainer.querySelectorAll(".notes__list-item").forEach(noteListItem => {
+                    this.onNoteDelete(noteListItem.dataset.noteId);
+                })
+            }
         });
 
         [inpTitle, inpBody].forEach(inputField => {
@@ -42,6 +56,7 @@ export default class NotesView {
         return `
             <div class="notes__list-item" data-note-id="${id}">
                 <div class="notes__small-title">${title}</div>
+                <div class="notes__small-delet">X</div>
                 <div class="notes__small-body">
                     ${body.substring(0, MAX_BODY_LENGTH)}
                     ${body.length > MAX_BODY_LENGTH ? "..." : ""}
@@ -71,7 +86,9 @@ export default class NotesView {
                 this.onNoteSelect(noteListItem.dataset.noteId);
             });
 
-            noteListItem.addEventListener("dblclick", () => {
+            const noteDeletButton = noteListItem.querySelector(".notes__small-delet");
+
+            noteDeletButton.addEventListener("click", () => {
                 const doDelete = confirm("Are you sure you want to delete this note?");
 
                 if (doDelete) {
